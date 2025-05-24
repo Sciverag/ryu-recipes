@@ -13,7 +13,51 @@ export default function RootLayout({
 }>) {
   return (
     <html data-theme="cozytheme" lang="es">
-      <body className="bg-base-100 text-primary">{children}</body>
+      <body className="bg-base-100 text-primary">
+        {children}
+        <ul className="circles">
+          <li>
+            <div></div>
+            <p></p>
+          </li>
+          <li>
+            <div></div>
+            <p></p>
+          </li>
+          <li>
+            <div></div>
+            <p></p>
+          </li>
+          <li>
+            <div></div>
+            <p></p>
+          </li>
+          <li>
+            <div></div>
+            <p></p>
+          </li>
+          <li>
+            <div></div>
+            <p></p>
+          </li>
+          <li>
+            <div></div>
+            <p></p>
+          </li>
+          <li>
+            <div></div>
+            <p></p>
+          </li>
+          <li>
+            <div></div>
+            <p></p>
+          </li>
+          <li>
+            <div></div>
+            <p></p>
+          </li>
+        </ul>
+      </body>
     </html>
   );
 }

@@ -1,6 +1,25 @@
-import Link from 'next/link';
+'use client';
+
+import { useRouter } from 'next/navigation';
 
 export default function Home() {
+  const router = useRouter();
+
+  function changeAnimation() {
+    const main = document.getElementById('animation-godown');
+    if (!main) {
+      return;
+    }
+    main.style.display = 'none';
+    setTimeout(() => {
+      main.style.display = 'flex';
+      main?.setAttribute('id', 'animation-goup');
+    }, 1);
+    setTimeout(() => {
+      router.push('/recipes');
+    }, 900);
+  }
+
   return (
     <main id="animation-godown" className="flex flex-col min-h-screen text-primary p-6">
       <div className="mx-7" id="rope-container">
@@ -19,9 +38,10 @@ export default function Home() {
           Comparte tus recetas, crea dietas y vive una experiencia acogedora mientras disfrutas de
           tu rutina
         </p>
-        <Link href="/recipes/new">
-          <button className="btn btn-primary text-base">Sube tu primera receta</button>
-        </Link>
+
+        <button onClick={changeAnimation} className="btn btn-primary text-base">
+          Ver recetas
+        </button>
       </section>
     </main>
   );
