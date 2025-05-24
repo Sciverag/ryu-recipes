@@ -13,3 +13,122 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id  String  @id @default(uuid())
+  email String  @unique
+  name  String?
+  image String @default("/images/default-user.jpg")
+  recipes Recipe[]
+  diets Diet[]
+  comments  Comment[]
+  ratings Rating[]
+  appliedDiet DietApplication?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Recipe {
+  id  String  @id @default(uuid())
+  title String
+  description String
+  coverImage  String @default("/images/default-cover.jpg")
+  videoUrl  String? 
+  authorId  String
+  author  User  @relation(fields: [authorId], references: [id])
+  steps Step[]
+  nutrition Nutrition?
+  ingredients String[]
+  comments Comment[]
+  ratings Rating[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  RecipeSelection RecipeSelection[]
+}
+
+model Step {
+  id  String @id @default(uuid())
+  order Int
+  text String
+  imageUrl  String?
+  recipeId String
+  recipe Recipe @relation(fields: [recipeId], references: [id])
+}
+
+model Nutrition {
+  id  String  @id @default(uuid())
+  calories  Int
+  protein Float
+  carbs Float
+  fats  Float
+  recipeId  String  @unique
+  recipe Recipe @relation(fields: [recipeId], references: [id])
+}
+
+model Diet {
+  id  String  @id @default(uuid())
+  title String
+  description String
+  creatorId String
+  creator User  @relation(fields: [creatorId], references: [id])
+  days  DietDay[]
+  comments  Comment[]
+  ratings Rating[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  DietApplication DietApplication[]
+}
+
+model DietDay {
+  id  String  @id @default(uuid())
+  day Int // 0 = Lunes, 6 = Domingo
+  calories  Int
+  protein Float
+  carbs Float
+  fats  Float
+  dietId String
+  diet  Diet  @relation(fields: [dietId], references: [id])
+}
+
+model DietApplication {
+  id  String  @id @default(uuid())
+  userId  String  @unique
+  dietId  String
+  user  User  @relation(fields: [userId], references: [id])
+  diet  Diet  @relation(fields: [dietId], references: [id])
+  selections  RecipeSelection[]
+}
+
+model RecipeSelection {
+  id  String  @id @default(uuid())
+  day Int // 0 = Lunes, 6 = Domingo
+  recipeId  String
+  applicationId String
+  recipe  Recipe  @relation(fields: [recipeId], references: [id])
+  application DietApplication @relation(fields: [applicationId], references: [id])
+}
+
+model Comment {
+  id  String  @id @default(uuid())
+  content String
+  userId  String
+  user  User  @relation(fields: [userId], references: [id])
+  recipeId  String?
+  dietId  String?
+  recipe Recipe?  @relation(fields: [recipeId], references: [id])
+  diet  Diet? @relation(fields: [dietId], references: [id])
+  createdAt DateTime  @default(now())
+}
+
+model Rating {
+  id  String  @id @default(uuid())
+  score Int // 1 a 5
+  userId  String
+  recipeId  String?
+  dietId  String?
+  user User @relation(fields: [userId], references: [id])
+  recipe  Recipe?  @relation(fields: [recipeId],  references: [id])
+  diet  Diet? @relation(fields: [dietId], references: [id])
+}
