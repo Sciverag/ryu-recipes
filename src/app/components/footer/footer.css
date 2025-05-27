@@ -1,0 +1,44 @@
+footer {
+    border-left: none !important;
+    border-right: none !important;
+    border-bottom: none !important;
+}
+
+.link {
+    position: relative;
+    color: var(--color-primary);
+    font-weight: bold;
+    transition: all 0.2s;
+}
+
+.link::before {
+    position: absolute;
+    content: "";
+    bottom: 0;
+    width: 0%;
+    height: 2px;
+    z-index: 1;
+    background-color: rgb(71, 150, 71);
+    transition: all 0.3s;
+}
+
+.link::after {
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 0;
+    height: 2px;
+    background-color: var(--color-primary);
+    opacity: 0.4;
+}
+
+.link:hover {
+    color: rgb(71, 150, 71);
+    letter-spacing: 0.1rem;
+}
+
+.link:hover::before {
+    width: 100%;
+}

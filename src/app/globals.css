@@ -29,6 +29,9 @@
   --color-error: #F1948A;
 }
 
+nextjs-portal {
+  display: none !important;
+}
 
 body {
   display: flex;
@@ -37,7 +40,8 @@ body {
 }
 
 main {
-  z-index: 2;
+  z-index: 1;
+  margin: auto;
 }
 
 .bg-base-100 {
@@ -63,7 +67,7 @@ main {
 
 #rope-container {
   position: absolute;
-  z-index: 1;
+  z-index: 0;
   display: flex;
   justify-content: space-between;
   top: -126px;
@@ -102,6 +106,7 @@ main {
 }
 
 .bg-secondary {
+  z-index: 1;
   box-shadow: inset -2px -2px 15px rgba(0, 0, 0, 0.377),
     2px 2px 0 #3b240f, -2px -2px 0 #3b240f,
     -2px 2px 0 #3b240f, 2px -2px 0 #3b240f,
@@ -123,7 +128,10 @@ main {
 
 .btn-primary:hover {
   scale: 1.02;
-  rotate: -1deg;
+}
+
+.btn-primary:active {
+  scale: 0.95;
 }
 
 @keyframes godown {
@@ -289,4 +297,20 @@ main {
     opacity: 0;
   }
 
+}
+
+#errorSection {
+  animation: spawn 0.5s ease-in;
+}
+
+@keyframes spawn {
+  0% {
+    scale: 0.8;
+    opacity: 0.3;
+  }
+
+  100% {
+    scale: 1;
+    opacity: 1;
+  }
 }

@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import Header from './components/header/header';
+import Footer from './components/footer/footer';
 
 export const metadata: Metadata = {
   title: 'Ryu Recipes',
@@ -14,7 +16,9 @@ export default function RootLayout({
   return (
     <html data-theme="cozytheme" lang="es">
       <body className="bg-base-100 text-primary">
+        <Header />
         {children}
+        <Footer></Footer>
         <ul className="circles">
           <li>
             <div></div>

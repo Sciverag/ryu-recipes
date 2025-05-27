@@ -21,16 +21,12 @@ export default function Home() {
   }
 
   return (
-    <main id="animation-godown" className="flex flex-col min-h-screen text-primary p-6">
+    <main id="animation-godown" className="flex flex-col min-h-screen mx-0 text-primary p-6">
       <div className="mx-7" id="rope-container">
         <p className="rope"></p>
         <p className="rope"></p>
       </div>
       <section className="max-w-7xl bg-secondary m-auto text-center py-10">
-        <div className="mx-7" id="point-container">
-          <p className="point"></p>
-          <p className="point"></p>
-        </div>
         <h1 className="text-4xl font-cozy_title md:text-5xl font-bold mb-10">
           Bienvenido a Ryu Recipes
         </h1>
