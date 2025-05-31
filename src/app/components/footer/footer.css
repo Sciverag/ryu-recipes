@@ -2,6 +2,8 @@ footer {
     border-left: none !important;
     border-right: none !important;
     border-bottom: none !important;
+    margin-top: auto;
+    animation: footer 0.5s ease-in;
 }
 
 .link {
@@ -41,4 +43,14 @@ footer {
 
 .link:hover::before {
     width: 100%;
+}
+
+@keyframes footer {
+    0% {
+        transform: translateY(100%);
+    }
+
+    100% {
+        transform: translateY(0%);
+    }
 }

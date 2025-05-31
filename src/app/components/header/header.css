@@ -2,15 +2,16 @@ header {
     border-left: none !important;
     border-top: none !important;
     border-right: none !important;
+    margin-bottom: auto;
     animation: header 0.5s ease-in;
     z-index: 2 !important;
 }
 
-header button {
+#logo {
     transition: all 0.2s ease-in;
 }
 
-header button:hover {
+#logo:hover {
     scale: 102%;
     rotate: -2deg;
     filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.212));

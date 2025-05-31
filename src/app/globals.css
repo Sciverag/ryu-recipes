@@ -15,7 +15,7 @@
 
 :root {
   color-scheme: cozytheme;
-  --color-base-100: #fffdf7;
+  --color-base-100: #86490f;
   --color-base-content: #f2efe5;
   --color-primary: #af6d4f;
   --color-primary-content: #f2efe5;
@@ -27,27 +27,42 @@
   --color-success: #A3E4D7;
   --color-warning: #F9E79F;
   --color-error: #F1948A;
+  scrollbar-color:
+    color-mix(in oklch, currentColor 0%, #86490f) #3b240f;
+  scrollbar-width: thin;
 }
 
 nextjs-portal {
   display: none !important;
 }
 
+@keyframes hideOverflow {
+  0% {
+    overflow: hidden;
+  }
+
+  100% {
+    overflow: visible;
+  }
+}
+
 body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  animation: hideOverflow 1.7s;
 }
 
 main {
   z-index: 1;
-  margin: auto;
+  margin: 1.3rem;
 }
 
 .bg-base-100 {
   background-image: url("/images/background.png");
   background-position: center;
   background-size: cover;
+  background-attachment: fixed;
 }
 
 #animation-godown {
@@ -300,13 +315,13 @@ main {
 }
 
 #errorSection {
-  animation: spawn 0.5s ease-in;
+  animation: spawn 0.3s ease-in;
 }
 
 @keyframes spawn {
   0% {
     scale: 0.8;
-    opacity: 0.3;
+    opacity: 0.5;
   }
 
   100% {

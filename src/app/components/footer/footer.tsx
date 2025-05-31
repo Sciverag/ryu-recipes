@@ -13,7 +13,7 @@ export default function Header() {
   }
 
   return (
-    <footer className="bg-secondary p-3 px-7 flex justify-center gap-4 items-center flex-col sm:flex-row">
+    <footer className="bg-secondary p-4 px-7 flex justify-center gap-4 items-center flex-col sm:flex-row">
       <p className="text-secondary-content w-fit">© Ryu Recipes 2025</p>
 
       <div className="flex flex-col sm:flex-row text-center sm:ms-auto gap-4">

@@ -14,7 +14,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html data-theme="cozytheme" lang="es">
+    <html lang="es">
       <body className="bg-base-100 text-primary">
         <Header />
         {children}
