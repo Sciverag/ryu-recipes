@@ -5,6 +5,7 @@ header {
     margin-bottom: auto;
     animation: header 0.5s ease-in;
     z-index: 2 !important;
+    border-radius: 0px !important;
 }
 
 #logo {
@@ -17,6 +18,19 @@ header {
     filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.212));
 }
 
+.headerLink {
+    position: relative;
+    color: var(--color-primary);
+    font-weight: bold;
+    transition: all 0.2s;
+    display: flex;
+}
+
+.headerLink:hover {
+    color: rgb(71, 150, 71);
+    letter-spacing: 0.1rem;
+}
+
 @keyframes header {
     0% {
         transform: translateY(-100%);
@@ -25,4 +39,19 @@ header {
     100% {
         transform: translateY(0%);
     }
+}
+
+#dropdownMenu {
+    border-left: none !important;
+    border-right: none !important;
+    border-top: none !important;
+    border-radius: 0px;
+    left: 0px;
+    top: 100px;
+    height: calc(100vh - 100px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 1;
 }

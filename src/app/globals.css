@@ -2,6 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .animate-fadeIn {
+    animation: fadeIn 0.3s ease-out forwards;
+  }
+
+  .animate-fadeOut {
+    animation: fadeOut 0.3s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeOut {
+    from {
+      opacity: 0;
+      transform: translateY(calc(-100vh + 100px));
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+
 @font-face {
   font-family: 'Pacifico';
   src: url('/fonts/Pacifico-Regular.ttf');
@@ -20,7 +55,7 @@
   --color-primary: #af6d4f;
   --color-primary-content: #f2efe5;
   --color-secondary: #e7be87;
-  --color-secondary-content: #3b240f;
+  --color-secondary-content: #442b13;
   --color-accent: #C9F2C7;
   --color-neutral: #f2efe5;
   --color-info: #C4DBF6;
@@ -55,7 +90,7 @@ body {
 
 main {
   z-index: 1;
-  margin: 1.3rem;
+  margin: 1.3rem auto;
 }
 
 .bg-base-100 {
@@ -122,6 +157,7 @@ main {
 
 .bg-secondary {
   z-index: 1;
+  border-radius: 10px;
   box-shadow: inset -2px -2px 15px rgba(0, 0, 0, 0.377),
     2px 2px 0 #3b240f, -2px -2px 0 #3b240f,
     -2px 2px 0 #3b240f, 2px -2px 0 #3b240f,
@@ -133,6 +169,7 @@ main {
 
 .btn-primary {
   background-color: #86490f;
+  border-radius: 10px;
   box-shadow: inset 0 2px rgba(255, 191, 16, 0.226);
   color: #ffd88f;
   border-color: #492c11;
@@ -143,6 +180,8 @@ main {
 
 .btn-primary:hover {
   scale: 1.02;
+  background-color: rgb(61, 150, 61);
+  color: whitesmoke;
 }
 
 .btn-primary:active {
@@ -315,7 +354,7 @@ main {
 }
 
 #errorSection {
-  animation: spawn 0.3s ease-in;
+  animation: fadeIn 0.3s ease-in;
 }
 
 @keyframes spawn {

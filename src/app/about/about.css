@@ -4,6 +4,10 @@
     background-position: bottom;
     background-size: cover;
     background-repeat: no-repeat;
+    border-radius: 0px !important;
+    border-left: none;
+    border-right: none;
+    border-top: none;
 }
 
 @media (max-width: 766px) {

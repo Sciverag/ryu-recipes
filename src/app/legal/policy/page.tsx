@@ -15,7 +15,7 @@ export default function PoliticaDePrivacidad() {
         <h2 className="text-3xl mb-4 font-cozy_title font-semibold mt-4">
           1. Información que recopilamos
         </h2>
-        <ul className="list-disc w-fit mx-auto text-start mb-6 text-secondary-content">
+        <ul className="md:list-disc w-fit mx-auto text-center md:text-start mb-6 text-secondary-content">
           <li>Tu correo electrónico al registrarte</li>
           <li>Recetas y dietas que compartes</li>
           <li>Valoraciones y comentarios</li>
