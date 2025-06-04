@@ -1,0 +1,19 @@
+#aboutSection {
+    background-image: url("/images/aboutBack.png");
+    height: 55vh;
+    background-position: bottom;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+@media (max-width: 766px) {
+    #aboutSection {
+        height: 40vh;
+    }
+}
+
+@media (max-width: 424px) {
+    #aboutSection {
+        height: 25vh;
+    }
+}
