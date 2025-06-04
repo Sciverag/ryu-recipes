@@ -1,7 +1,9 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { XMarkIcon } from '@heroicons/react/24/outline';
+import { useRouter } from 'next/navigation';
+import { useAuth } from '@/context/AuthContext';
 
 interface Props {
   isOpen: boolean;
@@ -17,6 +19,39 @@ export default function LoginModal({ isOpen, onClose }: Props) {
     }
   }, [isOpen]);
 
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const router = useRouter();
+  const { login } = useAuth();
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
+
+    try {
+      const res = await fetch('/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setError(data.error || 'Error al iniciar sesión');
+        return;
+      }
+
+      login(data.token);
+
+      onClose();
+      router.refresh();
+    } catch (err) {
+      setError('Error de conexión');
+    }
+  };
+
   if (!isOpen) return null;
 
   return (
@@ -30,17 +65,20 @@ export default function LoginModal({ isOpen, onClose }: Props) {
         </button>
 
         <h2 className="text-xl font-bold mb-4 text-[#5e4633]">Inicia Sesión</h2>
-        <form className="flex flex-col gap-4">
+        <form className="flex flex-col gap-4" onSubmit={handleLogin}>
           <input
             type="email"
             placeholder="Correo electrónico"
             className="p-2 rounded border border-[#d1bfa8] focus:outline-none"
+            onChange={e => setEmail(e.target.value)}
           />
           <input
             type="password"
             placeholder="Contraseña"
             className="p-2 rounded border border-[#d1bfa8] focus:outline-none"
+            onChange={e => setPassword(e.target.value)}
           />
+          {error && <p className="text-red-500 text-sm">{error}</p>}
           <button type="submit" className="btn btn-primary text-base">
             Entrar
           </button>

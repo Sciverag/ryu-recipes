@@ -6,20 +6,25 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import {
+  ArrowLeftEndOnRectangleIcon,
   Bars3Icon,
   BookOpenIcon,
   CalendarIcon,
   HomeIcon,
+  UserCircleIcon,
   XMarkIcon,
 } from '@heroicons/react/24/solid';
 import { BuildingStorefrontIcon } from '@heroicons/react/24/solid';
-import LoginModal from '../loginModal';
+import LoginModal from '../LoginModal';
+import { useAuth } from '@/context/AuthContext';
 
 export default function Header() {
   const pathname = usePathname();
   const isInLanding = pathname === '/';
   const [isOpen, setIsOpen] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
+  const { isLoggedIn } = useAuth();
+  const { logout } = useAuth();
 
   if (isInLanding) {
     return null;
@@ -46,18 +51,36 @@ export default function Header() {
           <CalendarIcon className="h-6 w-6"></CalendarIcon>
           <button className="w-max">Dietas</button>
         </Link>
-        <Link className="headerLink flex items-center gap-1" href="/menu">
-          <BookOpenIcon className="h-6 w-6"></BookOpenIcon>
-          <button className="w-max">Mi Menú</button>
-        </Link>
+        {isLoggedIn && (
+          <Link className="headerLink flex items-center gap-1" href="/menu">
+            <BookOpenIcon className="h-6 w-6"></BookOpenIcon>
+            <button className="w-max">Mi Menú</button>
+          </Link>
+        )}
       </div>
 
-      <button
-        onClick={() => setShowLogin(true)}
-        className="btn btn-primary text-base md:flex hidden"
-      >
-        Iniciar Sesión
-      </button>
+      {!isLoggedIn && (
+        <button
+          onClick={() => setShowLogin(true)}
+          className="btn btn-primary text-base md:flex hidden"
+        >
+          Iniciar Sesión
+        </button>
+      )}
+
+      {isLoggedIn && (
+        <div className="md:flex justify-center gap-8 mx-4 text-center hidden">
+          <Link className="headerLink flex items-center gap-1" href="/profile">
+            <UserCircleIcon className="h-10 w-10" title="Tu perfil"></UserCircleIcon>
+          </Link>
+          <button onClick={logout} className="headerLink flex items-center gap-1">
+            <ArrowLeftEndOnRectangleIcon
+              className="h-10 w-10"
+              title="Cerrar sesión"
+            ></ArrowLeftEndOnRectangleIcon>
+          </button>
+        </div>
+      )}
 
       <button onClick={() => setIsOpen(!isOpen)} className="md:hidden btn btn-primary">
         {isOpen ? <XMarkIcon className="h-6 w-6" /> : <Bars3Icon className="h-6 w-6" />}
@@ -82,14 +105,29 @@ export default function Header() {
             <CalendarIcon className="h-6 w-6"></CalendarIcon>
             <button className="w-max">Dietas</button>
           </Link>
-          <Link className="headerLink flex items-center gap-1" href="/menu">
-            <BookOpenIcon className="h-6 w-6"></BookOpenIcon>
-            <button className="w-max">Mi Menú</button>
-          </Link>
 
-          <button onClick={() => setShowLogin(true)} className="btn btn-primary text-base">
-            Iniciar Sesión
-          </button>
+          {isLoggedIn && (
+            <>
+              <Link className="headerLink flex items-center gap-1" href="/menu">
+                <BookOpenIcon className="h-6 w-6"></BookOpenIcon>
+                <button className="w-max">Mi Menú</button>
+              </Link>
+              <Link className="headerLink flex items-center gap-1" href="/profile">
+                <UserCircleIcon className="h-6 w-6"></UserCircleIcon>
+                <button className="w-max">Tu Perfil</button>
+              </Link>
+              <button onClick={logout} className="headerLink flex items-center gap-1">
+                <ArrowLeftEndOnRectangleIcon className="h-6 w-6"></ArrowLeftEndOnRectangleIcon>
+                <button className="w-max">Cerrar Sesión</button>
+              </button>
+            </>
+          )}
+
+          {!isLoggedIn && (
+            <button onClick={() => setShowLogin(true)} className="btn btn-primary text-base">
+              Iniciar Sesión
+            </button>
+          )}
         </div>
       )}
     </header>
