@@ -1,0 +1,26 @@
+#userBanner {
+    background-image: url("/images/profilebackground.png");
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    filter: brightness(80%);
+}
+
+#userImage {
+    border-radius: 1000px !important;
+    position: relative;
+    top: -120px;
+    box-shadow: inset -2px -2px 15px rgba(0, 0, 0, 0.377),
+        0 5px 15px rgba(0, 0, 0, 0.473),
+        2px 2px 0 #3b240f, -2px -2px 0 #3b240f,
+        -2px 2px 0 #3b240f, 2px -2px 0 #3b240f,
+        inset 2px 2px 0 #3b240f, inset -2px -2px 0 #3b240f,
+        inset -2px 2px 0 #3b240f, inset 2px -2px 0 #3b240f;
+}
+
+#userInfo {
+    border-radius: 0px;
+    border-left: none;
+    border-right: none;
+    height: 250px;
+}

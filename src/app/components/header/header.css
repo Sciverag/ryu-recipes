@@ -28,7 +28,7 @@ header {
 
 .headerLink:hover {
     color: rgb(71, 150, 71);
-    letter-spacing: 0.1rem;
+    scale: 108%;
 }
 
 @keyframes header {

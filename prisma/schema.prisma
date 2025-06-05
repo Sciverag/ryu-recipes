@@ -20,6 +20,7 @@ model User {
   password String
   name  String?
   image String @default("/images/default-user.jpg")
+  isVerified Boolean @default(false)
   recipes Recipe[]
   diets Diet[]
   comments  Comment[]
@@ -27,6 +28,8 @@ model User {
   appliedDiet DietApplication?
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
+  verificationToken String?
+  verificationTokenExpires DateTime?
 }
 
 model Recipe {

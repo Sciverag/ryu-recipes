@@ -25,6 +25,7 @@ export default function Header() {
   const [showLogin, setShowLogin] = useState(false);
   const { isLoggedIn } = useAuth();
   const { logout } = useAuth();
+  const { user } = useAuth();
 
   if (isInLanding) {
     return null;
@@ -38,7 +39,7 @@ export default function Header() {
         </button>
       </Link>
 
-      <div className="md:flex justify-center gap-8 text-lg lg:text-2xl text-center hidden">
+      <div className="md:flex justify-center gap-8 lg:gap-16 text-lg lg:text-2xl text-center hidden">
         <Link className="headerLink flex items-center gap-1" href="/">
           <HomeIcon className="h-6 w-6"></HomeIcon>
           <button className="w-max">Inicio</button>
@@ -70,7 +71,7 @@ export default function Header() {
 
       {isLoggedIn && (
         <div className="md:flex justify-center gap-8 mx-4 text-center hidden">
-          <Link className="headerLink flex items-center gap-1" href="/profile">
+          <Link className="headerLink flex items-center gap-1" href={'/profile/' + user?.id}>
             <UserCircleIcon className="h-10 w-10" title="Tu perfil"></UserCircleIcon>
           </Link>
           <button onClick={logout} className="headerLink flex items-center gap-1">
