@@ -85,6 +85,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  overflow-x: hidden;
   animation: hideOverflow 1.7s;
 }
 
@@ -212,8 +213,8 @@ main {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   overflow: hidden;
   rotate: 180deg;
   z-index: 0;

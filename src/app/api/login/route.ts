@@ -17,6 +17,10 @@ export async function POST(req: Request) {
             return NextResponse.json({ error: 'Usuario o Contraseña incorrectos' }, { status: 404 })
         }
 
+        if (!user.isVerified) {
+            return NextResponse.json({ error: 'Usuario no validado' }, { status: 404 })
+        }
+
         const passwordMatch = await bcrypt.compare(password, user.password)
 
         if (!passwordMatch) {

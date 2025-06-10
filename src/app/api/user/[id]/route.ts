@@ -1,21 +1,23 @@
 // src/app/api/user/[id]/route.ts
 import { prisma } from '@/lib/prisma';
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(
-    req: Request,
-    { params }: { params: { id: string } }
+    req: NextRequest,
+    context: { params: { id: string } }
 ) {
+    const { id } = context.params;
+
     try {
         const user = await prisma.user.findUnique({
-            where: { id: params.id },
+            where: { id },
             select: {
                 id: true,
                 name: true,
                 email: true,
                 image: true,
                 createdAt: true,
-                updatedAt: true
+                updatedAt: true,
             },
         });
 

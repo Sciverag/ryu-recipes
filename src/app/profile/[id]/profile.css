@@ -9,6 +9,8 @@
 #userImage {
     border-radius: 1000px !important;
     position: relative;
+    width: 300px;
+    height: 300px;
     top: -120px;
     box-shadow: inset -2px -2px 15px rgba(0, 0, 0, 0.377),
         0 5px 15px rgba(0, 0, 0, 0.473),
@@ -23,4 +25,66 @@
     border-left: none;
     border-right: none;
     height: 250px;
+}
+
+#userContent>nav {
+    border: #3b240f 2px solid;
+    background: #86490f;
+}
+
+#userContent ul li {
+    border-radius: 100%;
+    padding: 0.5rem;
+    transition: transform 0.2s;
+}
+
+#userContent ul li:not(.active) {
+    cursor: pointer;
+}
+
+#userContent ul li:is(.active) {
+    color: #3b240f;
+    transform: translateY(62%);
+}
+
+#userContent ul li span {
+    position: absolute;
+    font-weight: bolder;
+    z-index: 0 !important;
+}
+
+#userContent ul li:is(.active) span {
+    opacity: 1;
+    color: rgb(46, 164, 46) !important;
+    transform: translateY(-190%);
+}
+
+#userContent ul li * {
+    z-index: 1;
+    transition: all 0.2s ease;
+}
+
+#userContent ul li:not(.active):hover * {
+    color: rgb(46, 164, 46);
+    transform: translateY(-4%);
+}
+
+
+.dot {
+    position: absolute;
+    border-radius: 100%;
+    background-color: rgb(46, 164, 46);
+    box-shadow: #3b240f 1px 1px 0, #3b240f -1px -1px 0, #3b240f -1px 1px 0, #3b240f 1px -1px 0,
+        #3b240f inset 1px 1px 0, #3b240f inset -1px -1px 0, #3b240f inset -1px 1px 0, #3b240f inset 1px -1px 0;
+    border: #86490f 4px solid;
+    opacity: 0;
+    z-index: 0 !important;
+    top: 20%;
+    transition: all 0.3s ease;
+}
+
+#userContent ul li:is(.active) .dot {
+    scale: 1;
+    opacity: 1;
+    transform: translateY(-26%);
 }

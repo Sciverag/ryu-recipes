@@ -3,9 +3,7 @@
 
 import { createContext, useContext, useEffect, useState } from 'react';
 import { jwtDecode } from 'jwt-decode';
-import { User } from '@/generated/prisma';
-
-type LogedUser = Omit<User, 'password'>;
+import { LogedUser } from '@/types/General';
 
 type AuthContextType = {
   isLoggedIn: boolean;
