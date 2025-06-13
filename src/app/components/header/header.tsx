@@ -94,32 +94,52 @@ export default function Header() {
           id="dropdownMenu"
           className="md:hidden mt-4 flex flex-col gap-3 bg-secondary px-6 py-4 shadow-inner rounded-b-xl absolute w-full animate-fadeOut"
         >
-          <Link className="headerLink flex items-center gap-1" href="/">
+          <Link
+            onClick={() => setIsOpen(!isOpen)}
+            className="headerLink flex items-center gap-1"
+            href="/"
+          >
             <HomeIcon className="h-6 w-6"></HomeIcon>
             <button className="w-max">Inicio</button>
           </Link>
-          <Link className="headerLink flex items-center gap-1" href="/recipes">
+          <Link
+            onClick={() => setIsOpen(!isOpen)}
+            className="headerLink flex items-center gap-1"
+            href="/recipes"
+          >
             <BuildingStorefrontIcon className="h-6 w-6"></BuildingStorefrontIcon>
             <button className="w-max">Recetas</button>
           </Link>
-          <Link className="headerLink flex items-center gap-1" href="/diets">
+          <Link
+            onClick={() => setIsOpen(!isOpen)}
+            className="headerLink flex items-center gap-1"
+            href="/diets"
+          >
             <CalendarIcon className="h-6 w-6"></CalendarIcon>
             <button className="w-max">Dietas</button>
           </Link>
 
           {isLoggedIn && (
             <>
-              <Link className="headerLink flex items-center gap-1" href="/menu">
+              <Link
+                onClick={() => setIsOpen(!isOpen)}
+                className="headerLink flex items-center gap-1"
+                href="/menu"
+              >
                 <BookOpenIcon className="h-6 w-6"></BookOpenIcon>
                 <button className="w-max">Mi Menú</button>
               </Link>
-              <Link className="headerLink flex items-center gap-1" href="/profile">
+              <Link
+                onClick={() => setIsOpen(!isOpen)}
+                className="headerLink flex items-center gap-1"
+                href={'/profile/' + user?.id}
+              >
                 <UserCircleIcon className="h-6 w-6"></UserCircleIcon>
                 <button className="w-max">Tu Perfil</button>
               </Link>
               <button onClick={logout} className="headerLink flex items-center gap-1">
                 <ArrowLeftEndOnRectangleIcon className="h-6 w-6"></ArrowLeftEndOnRectangleIcon>
-                <button className="w-max">Cerrar Sesión</button>
+                <p className="w-max">Cerrar Sesión</p>
               </button>
             </>
           )}

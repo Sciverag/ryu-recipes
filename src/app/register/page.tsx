@@ -56,7 +56,7 @@ export default function RegisterPage() {
           placeholder="Nombre de usuario"
           value={form.name}
           onChange={handleChange}
-          className="p-2 rounded border border-[#d1bfa8] focus:outline-none w-full"
+          className="p-2 transition-all rounded border bg-[#FDE3C0] placeholder:text-[#94764f] border-[#d1bfa8] border-b-[#94764f] border-l-0 border-r-0 border-t-0 border-b-2 rounded-b-none focus:outline-none focus:border-b-[#7c5a2f] w-full"
           required
         />
         <input
@@ -65,7 +65,7 @@ export default function RegisterPage() {
           placeholder="Correo electrónico"
           value={form.email}
           onChange={handleChange}
-          className="p-2 rounded border border-[#d1bfa8] focus:outline-none w-full"
+          className="p-2 transition-all rounded border bg-[#FDE3C0] placeholder:text-[#94764f] border-[#d1bfa8] border-b-[#94764f] border-l-0 border-r-0 border-t-0 border-b-2 rounded-b-none focus:outline-none focus:border-b-[#7c5a2f] w-full"
           required
         />
         <input
@@ -76,7 +76,7 @@ export default function RegisterPage() {
           placeholder="Contraseña"
           value={form.password}
           onChange={handleChange}
-          className="p-2 rounded border border-[#d1bfa8] focus:outline-none w-full"
+          className="p-2 transition-all rounded border bg-[#FDE3C0] placeholder:text-[#94764f] border-[#d1bfa8] border-b-[#94764f] border-l-0 border-r-0 border-t-0 border-b-2 rounded-b-none focus:outline-none focus:border-b-[#7c5a2f] w-full"
           required
         />
         <label className="label cursor-pointer">
@@ -85,7 +85,7 @@ export default function RegisterPage() {
             name="terms"
             checked={form.terms}
             onChange={handleChange}
-            className="checkbox border bg-[#fff2e2] mr-2"
+            className="checkbox border bg-[#FDE3C0] mr-2"
           />
           <span className="label-text font-cozy_text text-secondary-content">
             Acepto los{' '}

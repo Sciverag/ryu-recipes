@@ -1,0 +1,7 @@
+#userImageUpdate {
+    border-radius: 100% !important;
+}
+
+#userImageUpdate~div:hover {
+    opacity: 1;
+}

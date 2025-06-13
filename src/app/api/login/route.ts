@@ -33,7 +33,6 @@ export async function POST(req: Request) {
             { expiresIn: '7d' }
         )
 
-        // Puedes devolver el token o establecerlo como cookie
         return NextResponse.json({ token, user: { name: user.name, email: user.email } })
 
     } catch (error) {

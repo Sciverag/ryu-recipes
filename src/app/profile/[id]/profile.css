@@ -1,6 +1,5 @@
 #userBanner {
     background-image: url("/images/profilebackground.png");
-    height: 400px;
     background-size: cover;
     background-position: center;
     filter: brightness(80%);
@@ -9,8 +8,6 @@
 #userImage {
     border-radius: 1000px !important;
     position: relative;
-    width: 300px;
-    height: 300px;
     top: -120px;
     box-shadow: inset -2px -2px 15px rgba(0, 0, 0, 0.377),
         0 5px 15px rgba(0, 0, 0, 0.473),
@@ -24,7 +21,7 @@
     border-radius: 0px;
     border-left: none;
     border-right: none;
-    height: 250px;
+    min-height: 250px;
 }
 
 #userContent>nav {
@@ -87,4 +84,20 @@
     scale: 1;
     opacity: 1;
     transform: translateY(-26%);
+}
+
+#settingsButtons *>button {
+    opacity: 0;
+}
+
+#settingsButtons *:nth-child(1)>button {
+    animation-delay: 0s;
+}
+
+#settingsButtons *:nth-child(2)>button {
+    animation-delay: 0.1s;
+}
+
+#settingsButtons *:nth-child(3)>button {
+    animation-delay: 0.2s;
 }

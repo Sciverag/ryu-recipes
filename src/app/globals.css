@@ -145,7 +145,6 @@ main {
 }
 
 .font-cozy_title {
-  letter-spacing: 4px;
   text-shadow: 1.6px 1.6px #3b240f,
     -1.6px -1.6px #3b240f,
     1.6px -1.6px #3b240f,
@@ -179,7 +178,11 @@ main {
   transition: all 0.1s ease-in;
 }
 
-.btn-primary:hover {
+.btn-primary:disabled {
+  filter: grayscale(100%);
+}
+
+.btn-primary:not(:disabled):hover {
   scale: 1.02;
   background-color: rgb(61, 150, 61);
   color: whitesmoke;

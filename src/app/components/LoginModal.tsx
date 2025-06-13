@@ -48,6 +48,7 @@ export default function LoginModal({ isOpen, onClose }: Props) {
       onClose();
       router.refresh();
     } catch (err) {
+      console.error(err);
       setError('Error de conexión');
     }
   };
@@ -69,13 +70,15 @@ export default function LoginModal({ isOpen, onClose }: Props) {
           <input
             type="email"
             placeholder="Correo electrónico"
-            className="p-2 rounded border border-[#d1bfa8] focus:outline-none"
+            name="email"
+            className="p-2 transition-all rounded border bg-[#FDE3C0] placeholder:text-[#94764f] border-[#d1bfa8] border-b-[#94764f] border-l-0 border-r-0 border-t-0 border-b-2 rounded-b-none focus:outline-none focus:border-b-[#7c5a2f]"
             onChange={e => setEmail(e.target.value)}
           />
           <input
             type="password"
             placeholder="Contraseña"
-            className="p-2 rounded border border-[#d1bfa8] focus:outline-none"
+            name="password"
+            className="p-2 transition-all rounded border bg-[#FDE3C0] placeholder:text-[#94764f] border-[#d1bfa8] border-b-[#94764f] border-l-0 border-r-0 border-t-0 border-b-2 rounded-b-none focus:outline-none focus:border-b-[#7c5a2f]"
             onChange={e => setPassword(e.target.value)}
           />
           {error && <p className="text-red-500 text-sm">{error}</p>}
